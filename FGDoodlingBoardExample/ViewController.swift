@@ -41,6 +41,12 @@ class ViewController: UIViewController {
         view.addSubview(board)
         board.frame = .init(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.width)
         board.center = view.center
+        weak var wkself = self
+        board.contentsChangeHandler = {
+            (wkself?.view.viewWithTag(200) as? UIButton)?.isEnabled = $0
+            (wkself?.view.viewWithTag(201) as? UIButton)?.isEnabled = wkself?.board.hasRedo ?? false
+            (wkself?.view.viewWithTag(202) as? UIButton)?.isEnabled = $0
+        }
     }
     
     private func createUI() {
@@ -78,6 +84,8 @@ class ViewController: UIViewController {
             let btn = UIButton.init()
             btn.setTitle(names[i], for: .normal)
             btn.setTitleColor(.blue, for: .normal)
+            btn.setTitleColor(.lightGray, for: .disabled)
+            btn.isEnabled = false
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             view.addSubview(btn)
             let xpos = marginx + (w + gapx) * CGFloat(i)

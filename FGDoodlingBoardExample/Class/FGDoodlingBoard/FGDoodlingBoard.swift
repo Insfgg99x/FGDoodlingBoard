@@ -62,6 +62,10 @@ public class FGDoodlingBoard: UIView {
         }
     }
     
+    var hasRedo : Bool {
+        return (undoPath != nil)
+    }
+    
     var contents : [[String : Any]] {
         get {
             guard hasContents else {
