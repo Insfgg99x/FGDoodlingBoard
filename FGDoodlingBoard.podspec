@@ -10,8 +10,6 @@ s.frameworks   = 'Foundation','UIKit'
 s.ios.deployment_target = '8.0'
 s.source_files = 'FGDoodlingBoard/*.swift'
 s.requires_arc = true
-s.dependency     'SnapKit'
-s.dependency	 'FGHUD', '2.4'
-s.dependency     'FGToolKit', '2.1.1'
+#s.dependency     'SnapKit'
 end
 
